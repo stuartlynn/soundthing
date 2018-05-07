@@ -4,19 +4,19 @@ export const UPDATE_SOURCE = 'sources/UPDATE_SOURCE'
 
 const initalState = {
   1: {
-    url: '/sounds/',
+    soundID: 1,
     location: [10,20],
     radius: 20,
     color:'red'
   },
   2:{
-    url: '/sounds/',
+    soundID: 2,
     location: [20,30],
     radius: 30,
     color: 'green'
   },
   3:{
-    url: '/sounds/',
+    soundID: 3,
     location: [20,30],
     radius: 30,
     blue: 'blue'
@@ -36,7 +36,8 @@ export default (state=initalState, action)=>{
         ...{ [action.id] : action.payload }
       }
     case UPDATE_SOURCE:
-      let newSource = { ...state[action.id], ...state.payload }
+      let newSource = { ...state[action.id], ...action.payload }
+      console.log('new source is ', newSource)
       return {
         ...state,
         ...{ [action.id] : newSource }

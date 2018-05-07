@@ -34,7 +34,7 @@ export default (state=initalState, action)=>{
         ...{ [action.id] : action.payload }
       }
     case UPDATE_SOUND:
-      let newSound = { ...state[action.id], ...state.payload }
+      let newSound = { ...state[action.id], ...action.payload }
       return {
         ...state,
         ...{ [action.id] : newSound }

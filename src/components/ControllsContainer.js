@@ -8,6 +8,7 @@ import SourceList from './SourceList';
 const ControllsContainerOuter = styled.div`
   width: 20%;
   max-width: 500px;
+  min-width: 280px;
   border: 1px solid red;
   height: 100%;
   position:relative;
@@ -21,11 +22,11 @@ const Tabs  = styled.div`
   padding: 5px;
   margin-bottom:20px;
 `
-
 const Tab = styled.p`
   color: palevioletred;
   cursor: pointer;
 `
+
 class ControllsContainer extends Component {
   static propTypes = {
     children: PropTypes.node,

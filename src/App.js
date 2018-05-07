@@ -5,6 +5,7 @@ import store from './store'
 import styled from 'styled-components';
 import SoundsSpace from './components/SoundsSpace'
 import ControllsContainer from './components/ControllsContainer'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './App.css';
 
 const Layout  = styled.div`
@@ -20,10 +21,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Layout>
-          <SoundsSpace />
-          <ControllsContainer />
-        </Layout>
+        <MuiThemeProvider>
+          <Layout>
+            <SoundsSpace />
+            <ControllsContainer />
+          </Layout>
+        </MuiThemeProvider>
       </Provider>
     );
   }
