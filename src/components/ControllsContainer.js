@@ -8,7 +8,7 @@ import SourceList from './SourceList';
 const ControllsContainerOuter = styled.div`
   width: 20%;
   max-width: 500px;
-  min-width: 280px;
+  min-width: 400px;
   border: 1px solid red;
   height: 100%;
   position:relative;
