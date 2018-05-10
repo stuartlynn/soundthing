@@ -1,25 +1,34 @@
 export const ADD_SOURCE = 'sources/ADD_SOURCE'
 export const REMOVE_SOURCE = 'sources/REMOVE_SOURCE'
 export const UPDATE_SOURCE = 'sources/UPDATE_SOURCE'
+export const SELECT_SOURCE = 'sources/SELECT_SOURCE'
+export const DESELECT_SOURCE = 'sources/DESELECT_SOURCE'
 
 const initalState = {
   1: {
     soundID: 1,
     location: [10,20],
     radius: 20,
-    color:'red'
+    color:'red',
+    triggerType: 'OnEnter',
+    selected: false
   },
   2:{
     soundID: 2,
     location: [20,30],
     radius: 30,
-    color: 'green'
+    color: 'green',
+    triggerType: 'OnLeave',
+    selected: false
   },
   3:{
     soundID: 3,
-    location: [20,30],
+    location: [90,90],
     radius: 30,
-    blue: 'blue'
+    blue: 'blue',
+    triggerType:'proximity',
+    proximityType: 'linear',
+    selected: false
   }
 }
 
@@ -29,6 +38,18 @@ export default (state=initalState, action)=>{
       return{
         ...state,
         ...{ [action.id] : action.payload }
+      }
+    case SELECT_SOURCE:
+      let sourceToSelect = { ...state[action.id], selected:true }
+      return {
+        ...state,
+        ...{ [action.id] : sourceToSelect }
+      }
+    case DESELECT_SOURCE:
+      let sourceToDeselect = { ...state[action.id], selected:false}
+      return {
+        ...state,
+        ...{ [action.id] : sourceToDeselect }
       }
     case REMOVE_SOURCE:
       return{
@@ -44,6 +65,24 @@ export default (state=initalState, action)=>{
       }
     default:
       return state
+  }
+}
+
+export const selectSource = (id)=>{
+  return ( dispatch ) => {
+    dispatch({
+      type: SELECT_SOURCE,
+      id: id
+    })
+  }
+}
+
+export const deselectSource = (id)=>{
+  return ( dispatch ) => {
+    dispatch({
+      type: DESELECT_SOURCE,
+      id: id
+    })
   }
 }
 
